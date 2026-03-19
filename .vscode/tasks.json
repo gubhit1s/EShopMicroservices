@@ -9,7 +9,8 @@
         "build",
         "${workspaceFolder}/Catalog.slnx",
         "/property:GenerateFullPaths=true",
-        "/consoleloggerparameters:NoSummary;ForceNoAlign"
+        "/consoleloggerparameters:NoSummary;ForceNoAlign",
+        "/property:LaunchProfile=https"
       ],
       "problemMatcher": "$msCompile"
     },
@@ -95,6 +96,15 @@
       "dockerRun": {},
       "netCore": {
         "appProject": "${workspaceFolder}/src/Services/Catalog/Catalog.API/Catalog.API.csproj"
+      }
+    },
+    {
+      "type": "shell",
+      "label": "compose-up-dev",
+      "command": "docker-compose -f compose.yaml -f compose.debug.yaml up -d --build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
       }
     }
   ]
