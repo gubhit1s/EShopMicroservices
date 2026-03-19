@@ -10,6 +10,13 @@ public class GetProductsEndpoint : ICarterModule
     {
       var result = await sender.Send(new GetProductsQuery());
       var response = result.Adapt<GetProductsResponse>();  //Mapster
-    });
+
+      return Results.Ok(response);
+    })
+    .WithName("GetProducts")
+    .Produces<GetProductsQuery>(StatusCodes.Status200OK)
+    .ProducesProblem(StatusCodes.Status400BadRequest)
+    .WithSummary("Get Products")
+    .WithDescription("Get Products"); ;
   }
 }
